@@ -82,6 +82,7 @@ body{
     flex-wrap: wrap;
     justify-content: center
 }
+
 :where(.game-modal, .keyboard) button {
     color: #fff;
     font-size: 1rem;
@@ -98,6 +99,10 @@ body{
     padding: 7px;
     width: calc(100% / 9 - 5px)
 }
+.keyboard button[disabled]{
+    opacity: 0.6;
+    pointer-events: none;
+}
 
 :where(.game-modal, .keyboard) button:hover {
     background: #8286c9;
@@ -109,11 +114,21 @@ body{
     top: 0;
     width: 100%;
     height: 100%;
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.6)
+    background: rgba(0,0,0,0.6);
+    transition: opacity 0.4s ease;
 }
+
+.game-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 .game-modal .content {
     background: #fff;
